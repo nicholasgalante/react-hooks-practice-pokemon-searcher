@@ -11,7 +11,7 @@ function PokemonPage() {
     fetch('http://localhost:3001/pokemon')
       .then(res => res.json())
       .then(data => setPokemonArray(data))
-  })
+  },[])
 
   return (
     <Container>
