@@ -1,7 +1,17 @@
-import React from "react";
+import React,{ useState } from "react";
 import { Form } from "semantic-ui-react";
 
 function PokemonForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    hp: "",
+    sprites: {
+      front: "",
+      back: "",
+    }
+  })
+
+  
   return (
     <div>
       <h3>Add a Pokemon!</h3>
