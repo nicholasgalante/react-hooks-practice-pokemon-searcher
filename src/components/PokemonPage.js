@@ -12,25 +12,29 @@ function PokemonPage() {
     fetch('http://localhost:3001/pokemon')
       .then(res => res.json())
       .then(data => setPokemonArray(data))
-  },[])
+  }, [])
 
-  function onSearchChange(searchValue){
+  function onSearchChange(searchValue) {
     setSearch(searchValue)
   }
 
   const displayedPokemon = pokemonArray.filter(pokemon => {
     return pokemon.name.includes(search)
   })
-  
+
+  function addPokemon(newPokemon){
+    setPokemonArray([...pokemonArray, newPokemon])
+  }
+
   return (
     <Container>
       <h1>Pokemon Searcher</h1>
       <br />
-      <PokemonForm />
+      <PokemonForm addPokemon={addPokemon}/>
       <br />
-      <Search onSearchChange={onSearchChange}/>
+      <Search onSearchChange={onSearchChange} />
       <br />
-      <PokemonCollection displayedPokemon={displayedPokemon}/>
+      <PokemonCollection displayedPokemon={displayedPokemon} />
     </Container>
   );
 }
